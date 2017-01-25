@@ -1,0 +1,45 @@
+import React, { Component, PropTypes } from 'react'
+import classnames from 'classnames'
+{{#if wantMessages}}
+import { FormattedMessage } from 'react-intl'
+import messages from './messages'
+{{/if}}
+import styles from './index.css'
+
+/**
+*
+* {{ properCase name }}
+*
+*/
+class {{ properCase name }} extends Component {
+    /**
+     * propTypes
+     *
+     * @property {string} rootStyle - the style of the component's root element
+     */
+    static propTypes = {
+        rootStyle: PropTypes.string
+    }
+
+    static defaultProps = {
+        rootStyle: ''
+    }
+
+    /**
+     * render
+     *
+     * @return {ReactElement} markup
+     */
+    render() {
+        const { rootStyle } = this.props
+        return (
+            <div className={classnames(styles.{{ properCase name }}, rootStyle)}>
+                {{#if wantMessages}}
+                <FormattedMessage {...messages.header} />
+                {{/if}}
+            </div>
+        )
+    }
+}
+
+export default {{ properCase name }}

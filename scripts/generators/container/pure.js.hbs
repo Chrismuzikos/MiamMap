@@ -1,0 +1,47 @@
+import React, { PureComponent, PropTypes } from 'react'
+import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
+import classnames from 'classnames'
+{{#if wantMessages}}
+import { FormattedMessage } from 'react-intl'
+import messages from './messages'
+{{/if}}
+import styles from './index.css'
+
+@connect(
+    (state) => ({}),
+    (dispatch) => bindActionCreators({}, dispatch)
+)
+/*
+* {{properCase name }}
+*/
+class {{ properCase name }} extends PureComponent {
+    /**
+     * propTypes
+     * @property {string} rootStyle - the style of the component's root element
+     */
+    static propTypes = {
+        rootStyle: PropTypes.string
+    }
+
+    static defaultProps = {
+        rootStyle: ''
+    }
+
+    /**
+     * render
+     * @return {ReactElement} markup
+     */
+    render() {
+        const { rootStyle } = this.props
+        return (
+            <div className={classnames(styles.{{ properCase name }}, rootStyle)}>
+                {{#if wantMessages}}
+                <FormattedMessage {...messages.header} />
+                {{/if}}
+            </div>
+        )
+    }
+}
+
+export default {{ properCase name }}
